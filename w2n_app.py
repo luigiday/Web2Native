@@ -1,3 +1,5 @@
+import sys
+
 def handle_error(yourfault, error, fix):
     if not yourfault:
         raise BaseException (f'''
@@ -13,9 +15,10 @@ Possible fixes : {fix}
 
 try:
     import eel
-    import sys
 except ImportError:
     handle_error(False, "Missing eel module.", "Please make sure the eel module is installed in your Python environment. You can install it using pip: pip install eel")
+    sys.exit(1)
+
 def launch(filename):
     eel.init('web')
 
